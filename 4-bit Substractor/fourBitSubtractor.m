@@ -19,10 +19,10 @@ function [] = fourBitSubtractor(a,b)
         carry=ors(ands(a(i), b(i)), ands(carry, xors(a(i),b(i))));
     end
     
-    
+    % Negative case
     if(carry==0)
-        %again take 2's complementof sum(-ve case)
-        % for 2's, 1st take 1's of sum
+        %again take 2's complement of difference
+        % for 2's, 1st take 1's complement of difference
         for i=1:4
             b(i)=xors(1,difference(i))
             % make a=0000 by complementing with itself

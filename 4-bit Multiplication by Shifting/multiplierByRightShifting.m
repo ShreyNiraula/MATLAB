@@ -8,16 +8,13 @@ function [] = multiplierByRightShifting(M,Q,n)
         Q(i)=input('Enter the n bit multiplier:');
     end
     
-    C=0;
     A(n)=zeros;
 
     % total of n cycles for n-bits
     for i=1:n  
-	% check for LSB of Q
-        if (Q(n)==0)
-            C=0;
-             
-        elseif (Q(n)==1)
+      C=0;
+	% check for LSB of Q  
+        if (Q(n)==1)
             % perform A = A + M(i)
             carry=0; % internal carry for A=A+M 
             for i=n:-1:1

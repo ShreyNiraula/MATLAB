@@ -1,4 +1,4 @@
-function [] = multiplierByRightShifting(m,q, n)
+function [] = multiplierByRightShifting(m,q,n)
   
     n=input('enter number of bits:');
     for i = 1:n
@@ -11,8 +11,10 @@ function [] = multiplierByRightShifting(m,q, n)
     
     C=0;
     A(n)=zeros;
+
     % total of 4 cycles
     for i=1:n  
+	% check for LSB of q
         if (q(n)==0)
             C=0;
             % just right shift CAQ
@@ -28,11 +30,12 @@ function [] = multiplierByRightShifting(m,q, n)
             A(1)=C;
             
         elseif (q(n)==1)
-            % A = A + m(i)
-            carry=0;  % for 4 A=A+M
+            % perform A = A + m(i)
+            carry=0; % internal carry for A=A+M 
             for i=n:-1:1
                 [A(i) , carry] = fullAdder(A(i), m(i), carry);
             end
+
             % make final carry = C for shifting
             C=carry;
             
